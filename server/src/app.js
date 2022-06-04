@@ -24,10 +24,10 @@ if (config.env !== 'test') {
   app.use(morgan.errorHandler);
 }
 
-//static files
+// static files
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-//view engine
+// view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
