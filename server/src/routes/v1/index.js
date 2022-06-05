@@ -17,7 +17,7 @@ const defaultRoutes = [
 
 const userRoutes = [
   {
-    path: '/profile',
+    path: '/p',
     route: profileRoute,
   }
 ]

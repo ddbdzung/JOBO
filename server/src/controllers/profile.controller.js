@@ -1,15 +1,13 @@
 // const httpStatus = require('http-status');
 
 const catchAsync = require('../utils/catchAsync');
+// const { User } = require('../models')
 
-const database = require('../../fakeDatabase');
-
-const getProfile = catchAsync(async (req, res) => {
-  const { userId } = req.params
-  const user = database.user.find(item => item.userId === userId)
-  return res.json({ user })
-});
+const createNewUser = catchAsync(async (req, res) => {
+  return res.json(req.body)
+  // const user = User.create()
+})
 
 module.exports = {
-  getProfile,
+  createNewUser,
 };
