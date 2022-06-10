@@ -1,0 +1,110 @@
+.featured-profile {
+  width: 374px;
+  height: 196px;
+  margin-left: 44px;
+  margin-bottom: 44px;
+  position: relative;
+
+  border: 1px solid #3f3f3f;
+}
+
+.featured-profile_logo {
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    top: 5px;
+  }
+}
+
+.featured-profile_hotjob {
+  position: absolute;
+  width: 72px;
+  height: 21px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  left: 313px;
+  top: 12px;
+
+  background: #ff7a00;
+  border-radius: 3px;
+
+  p {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+  }
+
+  span {
+    color: #ffffff;
+    font-size: 12px;
+  }
+}
+
+.featured-profile_bookmark {
+  span {
+    position: absolute;
+    left: 340px;
+    top: 40px;
+  }
+}
+
+.featured-profile_staff {
+  position: absolute;
+  left: 90px;
+  top: 10px;
+
+  font-weight: bold;
+}
+
+.featured-profile_company {
+  position: absolute;
+  left: 90px;
+  top: 30px;
+
+  font-weight: bold;
+}
+
+.featured-profile_address {
+  position: absolute;
+  left: 20px;
+  top: 75px;
+
+  font-size: 14px;
+}
+
+.featured-profile_wage {
+  position: absolute;
+  left: 20px;
+  top: 95px;
+
+  font-size: 14px;
+}
+
+.featured-profile_experience {
+  position: absolute;
+  left: 20px;
+  top: 115px;
+
+  font-size: 14px;
+}
+
+.featured-profile_workingTime {
+  position: absolute;
+  left: 20px;
+  top: 135px;
+
+  font-size: 14px;
+}
+
+.featured-profile_timeAgo {
+  position: absolute;
+  left: 20px;
+  top: 155px;
+
+  font-size: 14px;
+}

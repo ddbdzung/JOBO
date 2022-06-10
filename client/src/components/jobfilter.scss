@@ -1,0 +1,209 @@
+.job-filter {
+  position: absolute;
+  width: 340px;
+  height: 800px;
+  left: 51px;
+  top: 514px;
+
+  border: 3px solid #3f3f3f;
+
+  &_title {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-family: "Source Sans Pro";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+
+      color: #000000;
+    }
+  }
+}
+
+.job-filter_classify {
+  h2 {
+    margin-left: 12px;
+    margin-top: 14px;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #000000;
+  }
+
+  span {
+    position: absolute;
+    top: 140px;
+    left: 285px;
+    font-size: 35px;
+  }
+
+  .timejob {
+    padding: 7px;
+
+    input {
+      margin: 5px 5px;
+    }
+
+    label {
+      margin-left: 6px;
+    }
+  }
+
+  .switch_box {
+    display: flex;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    p {
+      margin-top: -3px;
+      margin-left: 10px;
+    }
+
+    input[type="checkbox"].switch_1 {
+      font-size: 10px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 3.5em;
+      height: 1.5em;
+      background: #ddd;
+      border-radius: 3em;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+
+    input[type="checkbox"].switch_1:checked {
+      background: #1473e6;
+    }
+
+    input[type="checkbox"].switch_1:after {
+      position: absolute;
+      content: "";
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      background: #fff;
+      -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+      -webkit-transform: scale(0.7);
+      transform: scale(0.7);
+      left: 0;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+
+    input[type="checkbox"].switch_1:checked:after {
+      left: calc(100% - 1.5em);
+    }
+  }
+}
+
+.job-filter_location {
+  h2 {
+    margin-left: 12px;
+    margin-top: 14px;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #000000;
+  }
+
+  span {
+    position: absolute;
+    top: 314px;
+    left: 285px;
+    font-size: 35px;
+  }
+
+  .location-job {
+    padding: 7px;
+
+    input {
+      margin: 5px 5px;
+    }
+
+    label {
+      margin-left: 6px;
+    }
+  }
+}
+
+.job-filter_exp {
+  h2 {
+    margin-left: 12px;
+    margin-top: 14px;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #000000;
+  }
+
+  span {
+    position: absolute;
+    top: 460px;
+    left: 285px;
+    font-size: 35px;
+  }
+
+  .exp-job {
+    padding: 7px;
+
+    input {
+      margin: 5px 5px;
+    }
+
+    label {
+      margin-left: 6px;
+    }
+  }
+}
+
+.job-filter_category {
+  h2 {
+    margin-left: 12px;
+    margin-top: 14px;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #000000;
+  }
+
+  span {
+    position: absolute;
+    top: 629px;
+    left: 285px;
+    font-size: 35px;
+  }
+
+  .category-job {
+    padding: 7px;
+
+    input {
+      margin: 5px 5px;
+    }
+
+    label {
+      margin-left: 6px;
+    }
+  }
+}

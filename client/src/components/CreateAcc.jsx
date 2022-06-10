@@ -2,6 +2,8 @@ import "./create-acc.scss";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const CreateAcc = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +13,8 @@ const CreateAcc = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
+      // firstName: "",
+      // lastName: "",
       password: "",
       confirm: "",
     },
@@ -21,6 +25,19 @@ const CreateAcc = () => {
           /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
           "Please enter a valid email address"
         ),
+
+      // firstName: Yup.string().required(""),
+
+      // lastName: Yup.string().required(""),
+
+      // fistName: Yup.string()
+      //   .required("")
+      //   .min(4, "Must be 4 characters or more"),
+
+      // lastName: Yup.string()
+      //   .required("")
+      //   .min(4, "Must be 4 characters or more"),
+
       password: Yup.string()
         .required("")
         .matches(
@@ -31,10 +48,39 @@ const CreateAcc = () => {
         .required("")
         .oneOf([Yup.ref("password"), null], "Password must match"),
     }),
+
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  // const navigate = useNavigate();
+
+  // const handleSubmit =  () => {
+  axios({
+    method: "post",
+    url: "http://localhost:3000/api/v1/auth/login",
+    data: {
+      email: email,
+      password: password,
+      confirm: confirm,
+    },
+  })
+    .then((data) => {
+      console.log(data)
+    })
+    .catch((err) => {
+      console.log(err)
+    });
+  //   console.log(resData);
+
+  //   if (resData.request.status === 200) {
+  //     console.log("Đăng ky thành công");
+  //     navigate("/");
+  //     localStorage.setItem("accessToken", resData.data.token);
+  //     localStorage.setItem("isLogin", true);
+  //   }
+  // };
 
   return (
     <div className="sign-in">
@@ -48,7 +94,8 @@ const CreateAcc = () => {
         <div className="create-acc_right_header">
           <h1>Create an account</h1>
           <p className="create-acc_right_header_already">
-            Already have an account? <a href="">Sign in</a>
+            Already have an account?
+            <Link to="/signin">Sign in</Link>
           </p>
           <p className="create-acc_right_header_email">Sign up with email</p>
         </div>
@@ -68,6 +115,34 @@ const CreateAcc = () => {
               )}
             </div>
 
+            {/* <div className="info-form_firstName">
+              <label>First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formik.values.firstName}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.firstName && (
+                <p className="errorMsg">{formik.errors.firstName}</p>
+              )}
+            </div>
+
+            <div className="info-form_lastName">
+              <label>Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.lastName && (
+                <p className="errorMsg">{formik.errors.lastName}</p>
+              )}
+            </div> */}
+
             <div className="info-form_password">
               <label>Password</label>
               <input
@@ -81,6 +156,7 @@ const CreateAcc = () => {
                 <p className="errorMsg">{formik.errors.password}</p>
               )}
             </div>
+
             <div className="info-form_confirm">
               <label>Confirm</label>
               <input

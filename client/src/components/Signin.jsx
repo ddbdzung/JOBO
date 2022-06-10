@@ -1,7 +1,9 @@
 import "./sign-in.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -43,7 +45,8 @@ const Signin = () => {
         <div className="sign-in_right_header">
           <h1>Sign in</h1>
           <p>
-            New user? <a href="">Create an account</a>
+            New user?
+            <Link to="/createacc">Create an account</Link>
           </p>
         </div>
         <div className="sign-in_right_section">
