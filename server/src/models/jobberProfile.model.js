@@ -6,10 +6,8 @@ const jobberProfileSchema = mongoose.Schema(
   {
     jobCompleted: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
     totalBudget: {
@@ -19,16 +17,12 @@ const jobberProfileSchema = mongoose.Schema(
     },
     field: [
       {
-        fieldId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Field',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Field',
       },
     ],
-    skills: [
-      {
-        skillName: { type: String },
-      },
+    skill: [
+      { type: String },
     ],
   },
   {

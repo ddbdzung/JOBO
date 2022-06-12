@@ -1,12 +1,8 @@
-const ROLE = {
-  ADMIN: 'admin',
-  USER: 'user',
-  GUEST: 'guest',
-};
-
-const OCCUPATION = {};
+const occupation = [
+  'student',
+  'teacher',
+];
 
 module.exports = {
-  ROLE,
-  OCCUPATION,
+  occupation,
 };

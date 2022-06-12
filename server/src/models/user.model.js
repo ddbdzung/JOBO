@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const { toJSON, paginate } = require('./plugins');
 const { roles } = require('../config/roles');
+const { occupation } = require('../config/constant');
 
 const userSchema = mongoose.Schema(
   {
@@ -47,17 +48,18 @@ const userSchema = mongoose.Schema(
     },
     occupation: {
       type: String,
+      enum: occupation,
     },
     about: {
       type: String,
     },
     clientProfileId: {
-      type: mongoose.schemeType.ObjectId,
-      ref: 'ClientProfileId',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ClientProfile',
     },
     jobberProfileId: {
-      type: mongoose.schemeType.ObjectId,
-      ref: 'JobberProfileId',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'JobberProfile',
     },
     isEmailVerified: {
       type: Boolean,

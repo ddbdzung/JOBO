@@ -6,26 +6,20 @@ const clientProfileSchema = mongoose.Schema(
   {
     openProject: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
     activeProject: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
     pastProject: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
   },

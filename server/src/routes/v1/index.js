@@ -19,9 +19,6 @@ const defaultRoutes = [
     path: '/users',
     route: userRoute,
   },
-];
-
-const userRoutes = [
   {
     path: '/p',
     route: profileRoute,
@@ -37,10 +34,6 @@ const devRoutes = [
 ];
 
 defaultRoutes.forEach((route) => {
-  router.use(route.path, route.route);
-});
-
-userRoutes.forEach((route) => {
   router.use(route.path, route.route);
 });
 
