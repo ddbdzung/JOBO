@@ -1,0 +1,339 @@
+body {
+  background: rgba(0, 0, 0, 0.3);
+  background: url(https://images.unsplash.com/photo-1469474968028-56623f02e42e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074)
+    no-repeat center center fixed;
+  background-size: cover;
+}
+
+.sign-in {
+  position: relative;
+}
+
+.sign-in_left {
+  position: absolute;
+  width: 385.67px;
+  height: 248px;
+  left: 88.67px;
+  top: 236px;
+
+  &_logo {
+    position: absolute;
+    width: 248px;
+    height: 248px;
+    left: 0px;
+    top: 0px;
+    background: url(../images/logo.png);
+    background-size: cover;
+  }
+
+  &_text {
+    position: absolute;
+    width: 181px;
+    height: 54px;
+    left: 204.66px;
+    top: 97.33px;
+
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21.3333px;
+    line-height: 27px;
+
+    color: #ffffff;
+  }
+}
+
+.sign-in_right {
+  position: absolute;
+  width: 426.67px;
+  height: 528px;
+  left: 693.33px;
+  top: 96px;
+  background-color: #ffffff;
+  border-radius: 6.66667px;
+
+  &_header {
+    h1 {
+      position: absolute;
+      width: 96px;
+      height: 40px;
+      left: 38.67px;
+      top: 33.33px;
+
+      font-family: "Source Sans Pro";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+
+      color: #000000;
+    }
+
+    p {
+      position: absolute;
+      width: 72px;
+      height: 20px;
+      left: 38.67px;
+      top: 82.67px;
+
+      font-family: "Source Sans Pro";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #000000;
+
+      a {
+        position: absolute;
+        width: 120px;
+        height: 20px;
+        left: 76.66px;
+        top: 0px;
+
+        text-decoration: none;
+        font-family: "Source Sans Pro";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #1473e6;
+      }
+    }
+  }
+
+  &_section {
+    .info-form {
+      &_email {
+        position: absolute;
+        width: 348px;
+        height: 41.33px;
+        left: 38.67px;
+        top: 136px;
+
+        label {
+          font-family: "Source Sans Pro";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 13px;
+
+          color: #3f3f3f;
+        }
+
+        input {
+          width: 100%;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 1px solid #000000;
+          margin-top: 5px;
+          font-size: 20px;
+        }
+
+        input:focus {
+          border-bottom: 2px solid #1473e6;
+        }
+      }
+
+      &_password {
+        position: absolute;
+        width: 348px;
+        height: 62.33px;
+        left: 38.67px;
+        top: 207.33px;
+
+        label {
+          font-family: "Source Sans Pro";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 13px;
+
+          color: #3f3f3f;
+        }
+
+        input {
+          width: 100%;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 1px solid #000000;
+          margin-top: 5px;
+          font-size: 20px;
+        }
+
+        input:focus {
+          border-bottom: 2px solid #1473e6;
+        }
+
+        a {
+          position: absolute;
+          width: 81px;
+          height: 13px;
+          left: 0px;
+          top: 67px;
+
+          text-decoration: none;
+          font-family: "Source Sans Pro";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 10.6667px;
+          line-height: 13px;
+
+          color: #1473e6;
+        }
+      }
+
+      &_btn-submit {
+        position: absolute;
+        width: 72px;
+        height: 28px;
+        left: 314.67px;
+        top: 290px;
+        background: #1473e6;
+        border-radius: 36px;
+
+        font-family: "Source Sans Pro";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10.6667px;
+        line-height: 13px;
+        border: none;
+        transition: all 0.5s ease;
+
+        color: #ffffff;
+
+        &:hover {
+          background-color: #0d66d0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &_footer {
+    .footer_line {
+      position: absolute;
+      width: 346.67px;
+      height: 20px;
+      left: 40px;
+      top: 324.67px;
+      display: flex;
+
+      .line-1 {
+        position: absolute;
+        width: 160px;
+        height: 0px;
+        left: 0px;
+        top: 20px;
+
+        border: 0.666667px solid #d9d9d9;
+      }
+
+      .or {
+        position: absolute;
+        width: 17px;
+        height: 20px;
+        left: 165.33px;
+        top: 20px;
+        transform: translateY(-50%);
+
+        font-family: "Source Sans Pro";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+
+        color: #3f3f3f;
+      }
+
+      .line-2 {
+        position: absolute;
+        width: 160px;
+        height: 0px;
+        left: 186.67px;
+        top: 20px;
+
+        border: 0.666667px solid #d9d9d9;
+      }
+    }
+
+    .footer_btn-gg {
+      position: absolute;
+      width: 346.67px;
+      height: 44px;
+      left: 40px;
+      top: 376.67px;
+
+      background: #ffffff;
+      border: 0.666667px solid #d9d9d9;
+      border-radius: 58px;
+
+      &_icon {
+        position: absolute;
+        left: 91px;
+        top: 8px;
+        font-size: 28px;
+      }
+
+      &_text {
+        position: absolute;
+        width: 124px;
+        height: 17px;
+        left: 127.67px;
+        top: 14px;
+
+        font-family: "Source Sans Pro";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13.3333px;
+        line-height: 17px;
+
+        color: #000000;
+      }
+    }
+
+    .footer_btn-gg:hover {
+      cursor: pointer;
+      border: 2px solid #d3d3d3;
+    }
+
+    .footer_btn-fb {
+      position: absolute;
+      width: 346.67px;
+      height: 44px;
+      left: 39.33px;
+      top: 440.67px;
+
+      background: #1473e6;
+      border-radius: 58px;
+
+      &_icon {
+        position: absolute;
+        left: 91px;
+        top: 7px;
+        font-size: 30px;
+      }
+
+      &_text {
+        position: absolute;
+        width: 153px;
+        height: 17px;
+        left: 127.67px;
+        top: 14px;
+
+        font-family: "Source Sans Pro";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13.3333px;
+        line-height: 17px;
+
+        color: #ffffff;
+      }
+    }
+
+    .footer_btn-fb:hover {
+      cursor: pointer;
+    }
+  }
+}

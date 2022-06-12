@@ -3,7 +3,7 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const { toJSON, paginate } = require('./plugins');
-const { ROLE } = require('../config/constant');
+const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
@@ -20,6 +20,9 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
       validate(value) {
         if (!validator.isEmail(value)) {
           throw new Error('Invalid email');
@@ -40,20 +43,11 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: [ROLE.ADMIN, ROLE.USER, ROLE.GUEST],
-      default: ROLE.GUEST,
-    },
     occupation: {
       type: String,
-      enum: [],
     },
     about: {
       type: String,
-      maxLength: 1024,
-    },
-    field: {
-      type: mongoose.schemeType.ObjectId,
-      ref: 'Field',
     },
     clientProfileId: {
       type: mongoose.schemeType.ObjectId,
@@ -104,6 +98,10 @@ userSchema.pre('save', async function (next) {
     user.password = await bcrypt.hash(user.password, 8);
   }
   next();
+});
+
+userSchema.virtual('fullName').get(function () {
+  return `${this.firstName} ${this.lastName}`;
 });
 
 /**
