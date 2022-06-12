@@ -3,19 +3,19 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const { toJSON, paginate } = require('./plugins');
-const { ROLE } = require('../config/constant')
+const { ROLE } = require('../config/constant');
 
 const userSchema = mongoose.Schema(
   {
     firstName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     lastName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     email: {
       type: String,
@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema(
         if (!validator.isEmail(value)) {
           throw new Error('Invalid email');
         }
-      }
+      },
     },
     password: {
       type: String,
@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema(
           throw new Error('Password must contain at least one letter and one number');
         }
       },
-      private: true // used by the toJSON plugin
+      private: true, // used by the toJSON plugin
     },
     role: {
       type: String,
@@ -62,10 +62,14 @@ const userSchema = mongoose.Schema(
     jobberProfileId: {
       type: mongoose.schemeType.ObjectId,
       ref: 'JobberProfileId',
-    }
+    },
+    isEmailVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
@@ -92,11 +96,6 @@ userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
 userSchema.methods.isPasswordMatch = async function (password) {
   const user = this;
   return bcrypt.compare(password, user.password);
-};
-
-userSchema.methods.populateOption = async function (populate) {
-  const userPopulate = await this.populate(populate).execPopulate();
-  return userPopulate;
 };
 
 userSchema.pre('save', async function (next) {

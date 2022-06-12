@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { toJSON } = require('./plugins')
+const { toJSON } = require('./plugins');
 
 const clientProfileSchema = mongoose.Schema(
   {
@@ -9,32 +9,28 @@ const clientProfileSchema = mongoose.Schema(
         jobId: {
           type: mongoose.SchemaTypes.ObjectId,
           ref: 'Job',
-        }
-      }
+        },
+      },
     ],
     activeProject: [
       {
         jobId: {
           type: mongoose.SchemaTypes.ObjectId,
           ref: 'Job',
-        }
-      }
+        },
+      },
     ],
     pastProject: [
       {
         jobId: {
           type: mongoose.SchemaTypes.ObjectId,
           ref: 'Job',
-        }
-      }
+        },
+      },
     ],
-    reviewId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Review',
-    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

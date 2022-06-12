@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { toJSON } = require('./plugins')
+const { toJSON } = require('./plugins');
 
 const jobberProfileSchema = mongoose.Schema(
   {
@@ -9,21 +9,30 @@ const jobberProfileSchema = mongoose.Schema(
         jobId: {
           type: mongoose.SchemaTypes.ObjectId,
           ref: 'Job',
-        }
-      }
+        },
+      },
     ],
-    totalBudget: { 
-      type: Number, 
-      required: true, 
+    totalBudget: {
+      type: Number,
+      required: true,
       min: 0,
     },
-    reviewId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Review',
-    },
+    field: [
+      {
+        fieldId: { 
+          type: mongoose.SchemaTypes.ObjectId, 
+          ref: 'Field' 
+        },
+      },
+    ],
+    skills: [
+      {
+        skillName: { type: String },
+      },
+    ],
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

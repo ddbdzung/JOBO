@@ -10,8 +10,6 @@ const router = express.Router();
 //   .route('/:userId')
 //   .get(validate(profileValidation.getProfile), profileController.getProfile);
 
-router
-  .route('/createNewUser')
-  .post(profileController.createNewUser)
-  
-module.exports = router
+router.route('/createNewUser').post(profileController.createNewUser);
+
+module.exports = router;

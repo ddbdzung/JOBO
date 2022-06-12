@@ -19,8 +19,8 @@ const userRoutes = [
   {
     path: '/p',
     route: profileRoute,
-  }
-]
+  },
+];
 
 const devRoutes = [
   // routes available only in development mode

@@ -1,14 +1,12 @@
 const ROLE = {
   ADMIN: 'admin',
   USER: 'user',
-  GUEST: 'guest'
+  GUEST: 'guest',
 };
 
-const OCCUPATION = {
-
-}
+const OCCUPATION = {};
 
 module.exports = {
   ROLE,
   OCCUPATION,
-}
+};
