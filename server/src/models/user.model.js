@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+
 const { toJSON, paginate } = require('./plugins');
 const { roles } = require('../config/roles');
 
@@ -32,7 +33,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 8,
+      minlength: [8, 'Password must be at least 8 characters'],
       validate(value) {
         if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
           throw new Error('Password must contain at least one letter and one number');
@@ -42,27 +43,20 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: roles,
-      default: 'user',
-    },
     occupation: {
       type: String,
     },
     about: {
       type: String,
     },
-    // fields: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'Field',
-    // },
-    // clientProfile: {
-    //   tyde: mongoose.Schema.Types.ObjectId,
-    //   ref: 'ClientProfile',
-    // },
-    // jobberProfile: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'JobberProfile',
-    // },
+    clientProfileId: {
+      type: mongoose.schemeType.ObjectId,
+      ref: 'ClientProfileId',
+    },
+    jobberProfileId: {
+      type: mongoose.schemeType.ObjectId,
+      ref: 'JobberProfileId',
+    },
     isEmailVerified: {
       type: Boolean,
       default: false,
