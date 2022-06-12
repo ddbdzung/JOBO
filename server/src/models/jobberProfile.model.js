@@ -19,9 +19,9 @@ const jobberProfileSchema = mongoose.Schema(
     },
     field: [
       {
-        fieldId: { 
-          type: mongoose.SchemaTypes.ObjectId, 
-          ref: 'Field' 
+        fieldId: {
+          type: mongoose.SchemaTypes.ObjectId,
+          ref: 'Field',
         },
       },
     ],
