@@ -52,12 +52,12 @@ const userSchema = mongoose.Schema(
       type: String,
     },
     clientProfileId: {
-      type: mongoose.schemeType.ObjectId,
-      ref: 'ClientProfileId',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ClientProfile',
     },
     jobberProfileId: {
-      type: mongoose.schemeType.ObjectId,
-      ref: 'JobberProfileId',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'JobberProfile',
     },
     isEmailVerified: {
       type: Boolean,
