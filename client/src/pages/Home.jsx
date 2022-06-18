@@ -3,10 +3,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 import CreateAcc from "../components/CreateAcc";
 import Signin from "../components/Signin";
 import "./home.scss";
+<<<<<<< HEAD
 import F_Profile from "../components/FProfile";
 import JobFilter from "../components/JobFilter";
 import JobSeeking from "../components/JobSeeking";
 import Header from "../components/Header";
+=======
+>>>>>>> 3e9e3c324387fd41d4ca8e23faaa8b56d7b9fb31
 
 const Home = () => {
   const data = [
@@ -80,6 +83,7 @@ const Home = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <Header />
 
       <div className="container"></div>
@@ -109,6 +113,43 @@ const Home = () => {
 
       {/* <Signin />
       <CreateAcc /> */}
+=======
+      <div className="header">
+        <div className="header_logo">
+          <img src="../images/logo.png" alt="" />
+        </div>
+
+        <ul className="header_nav">
+          <li className="header_nav_thue">
+            <a href="#">Thuê Freelancer</a>
+          </li>
+          <li className="header_nav_tim">
+            <a href="#">Tìm việc làm</a>
+          </li>
+          <li className="header_nav_about">
+            <a href="#">About Us</a>
+          </li>
+          <li className="header_nav_login">
+            <a href="#">Đăng nhập</a>
+          </li>
+          <li className="header_nav_signin">
+            <a href="#">Đăng ký</a>
+          </li>
+        </ul>
+        <div className="header_icon-person">
+          <button>
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div className="container"></div>
+      <div className="job-seeking">
+        <input type="text" placeholder="Tìm kiếm việc làm" />
+        <button>Search</button>
+      </div>
+      {/* <Signin /> */}
+      {/* <CreateAcc /> */}
+>>>>>>> 3e9e3c324387fd41d4ca8e23faaa8b56d7b9fb31
     </div>
   );
 };

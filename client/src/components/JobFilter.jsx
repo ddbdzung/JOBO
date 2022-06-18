@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./jobfilter.scss";
 
 const JobFilter = () => {
@@ -134,6 +135,12 @@ const JobFilter = () => {
       </div>
     </div>
   );
+=======
+import React from "react";
+
+const JobFilter = () => {
+  return <div></div>;
+>>>>>>> 3e9e3c324387fd41d4ca8e23faaa8b56d7b9fb31
 };
 
 export default JobFilter;
