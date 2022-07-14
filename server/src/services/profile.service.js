@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 const httpStatus = require('http-status');
 const { ClientProfile, JobberProfile, User } = require('../models');
-const { userService } = require('./index')
+const { userService, jobService } = require('./index')
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -119,7 +119,7 @@ const addJobIdToOptionProject = async (userId, jobId, option) => {
   const profile = await getClientProfileByUserId(userId)
   // Check if profile[option] has jobId => Can not push jobId anymore
   if (profile[option].includes(jobId)) {
-    throw new ApiError(httpStatus.FORBIDDEN, `'${option}' has already have jobId '${jobId}'`)
+    throw new ApiError(httpStatus.FORBIDDEN, `'${option}' has already had jobId '${jobId}'`)
   }
 
   // Remove jobId if existing in other property
@@ -137,6 +137,41 @@ const addJobIdToOptionProject = async (userId, jobId, option) => {
   return profile
 }
 
+/**
+ * 
+ * @param {String<Array>} jobIds 
+ * @returns totalBudget
+ */
+const getTotalBudgetByJobId = async (jobIds) => {
+  let budget = 0
+  jobIds.foreach(async jobId => {
+    const job = await jobService.getJobById(jobId)
+    budget += parseFloat(job.budget)
+  })
+  return budget
+}
+
+/**
+ * 
+ * @param {String} userId 
+ * @param {String} jobId Only 1 jobId can be updated each time.
+ * @returns updated jobber Profile
+ */
+const updateJobberProfileByUserId = async (userId, jobId, fieldId, skill) => {
+  const jobberProfile = await getJobberProfileByUserId(userId)
+  jobberProfile.jobCompleted.push(jobId)
+  // Chưa áp dụng Lodash Lib vào xử lý phần tử trùng lặp khi add thêm fieldId trùng lặp
+  fieldId.foreach(item => {
+    jobberProfile.field.push(item)
+  })
+  // Chưa áp dụng Lodash Lib vào xử lý phần tử trùng lặp khi add thêm skill trùng lặp
+  skill.foreach(item => {
+    jobberProfile.skill.push(item)
+  })
+  jobberProfile.totalBudget = getTotalBudgetByJobId()
+  return jobberProfile
+}
+
 module.exports = {
   getClientProfileById,
   createClientProfile,
@@ -146,4 +181,6 @@ module.exports = {
   addJobIdToOptionProject,
   getClientProfileByUserId,
   getJobberProfileByUserId,
+  updateJobberProfileByUserId,
+  getTotalBudgetByJobId,
 }

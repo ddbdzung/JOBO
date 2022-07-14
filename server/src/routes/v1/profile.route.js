@@ -17,9 +17,6 @@ router
   .route('/jobber/:userId')
   .get(validate(profileValidation.getJobberProfile), profileController.getJobberProfile)
   .post(validate(profileValidation.createJobberProfile), profileController.createJobberProfile)
-
-router
-  .route('/test/:userId')
-  .put(profileController.test)
+  .put(validate(profileValidation.updateJobberProfile), profileController.updateJobberProfile)
 
 module.exports = router;

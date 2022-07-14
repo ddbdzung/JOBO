@@ -1,12 +1,14 @@
+/* eslint-disable no-unused-vars */
 const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+
+const { toJSON, paginate } = require('./plugins');
 
 const fieldSchema = mongoose.Schema(
   {
     name: {
       type: String,
+      trim: true,
       required: true,
-      index: true,
     },
   },
   {
@@ -16,6 +18,7 @@ const fieldSchema = mongoose.Schema(
 
 // add plugin that converts mongoose to json
 fieldSchema.plugin(toJSON);
+fieldSchema.plugin(paginate);
 
 /**
  * @typedef Field

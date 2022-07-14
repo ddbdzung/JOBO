@@ -37,10 +37,22 @@ const createJobberProfile = {
   }),
 }
 
+const updateJobberProfile = {
+  params: Joi.object().keys({
+    userId: Joi.string().required().custom(objectId),
+  }),
+  body: Joi.object().keys({
+    jobId: Joi.string().required().custom(objectId),
+    fieldId: Joi.array().items(Joi.string().custom(objectId)),
+    skill: Joi.array().items(Joi.string()),
+  }),
+}
+
 module.exports = {
   getClientProfile,
   createClientProfile,
   updateClientProfile,
   getJobberProfile,
   createJobberProfile,
+  updateJobberProfile,
 };
