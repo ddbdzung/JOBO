@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const { toJSON, paginate } = require('./plugins');
 const { roles } = require('../config/roles');
+const { occupation } = require('../config/constant');
 
 const userSchema = mongoose.Schema(
   {
@@ -47,6 +48,7 @@ const userSchema = mongoose.Schema(
     },
     occupation: {
       type: String,
+      enum: occupation,
     },
     about: {
       type: String,

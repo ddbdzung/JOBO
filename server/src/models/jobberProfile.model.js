@@ -4,31 +4,29 @@ const { toJSON } = require('./plugins');
 
 const jobberProfileSchema = mongoose.Schema(
   {
+    // Job đã hoàn thành
     jobCompleted: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
+    // Tổng tiền đã được trả
     totalBudget: {
       type: Number,
-      required: true,
+      default: 0,
       min: 0,
     },
+    // Các lĩnh vực có thể làm 
     field: [
       {
-        fieldId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Field',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Field',
       },
     ],
-    skills: [
-      {
-        skillName: { type: String },
-      },
+    // Các kĩ năng bản thân có 
+    skill: [
+      { type: String },
     ],
   },
   {

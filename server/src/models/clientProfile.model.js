@@ -4,28 +4,25 @@ const { toJSON } = require('./plugins');
 
 const clientProfileSchema = mongoose.Schema(
   {
+    // JOB đang tuyển 
     openProject: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
+    // JOB đang hoạt động chưa kết thúc (không tuyển nữa)
     activeProject: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
+    // JOB đã hoàn thành (bao gồm thành công hoặc thất bại)
     pastProject: [
       {
-        jobId: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'Job',
-        },
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Job',
       },
     ],
   },
