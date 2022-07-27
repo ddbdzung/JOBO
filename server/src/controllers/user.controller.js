@@ -2,10 +2,12 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { userService } = require('../services');
+const { userService, profileService } = require('../services');
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
+  profileService.createClientProfile(user.id);
+  profileService.createJobberProfile(user.id);
   res.status(httpStatus.CREATED).send(user);
 });
 
@@ -13,6 +15,11 @@ const getUsers = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['name', 'role']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await userService.queryUsers(filter, options);
+  res.send(result);
+});
+
+const getUsersNoPagination = catchAsync(async (req, res) => {
+  const result = await userService.getUsersNoPagination();
   res.send(result);
 });
 
@@ -40,4 +47,5 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  getUsersNoPagination,
 };

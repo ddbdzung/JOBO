@@ -3,7 +3,8 @@ const express = require('express');
 const authRoute = require('./auth.route');
 const profileRoute = require('./profile.route');
 const userRoute = require('./user.route');
-const jobRoute = require("./job.route");
+const jobRoute = require('./job.route');
+const fieldRoute = require('./field.route');
 
 const docsRoute = require('./docs.route');
 const config = require('../../config/config');
@@ -24,6 +25,10 @@ const defaultRoutes = [
     path: '/jobs',
     route: jobRoute,
   },
+  {
+    path: '/f',
+    route: fieldRoute,
+  },
 ];
 
 const userRoutes = [
@@ -42,6 +47,9 @@ const devRoutes = [
 ];
 
 defaultRoutes.forEach((route) => {
+  router.use(route.path, route.route);
+});
+userRoutes.forEach((route) => {
   router.use(route.path, route.route);
 });
 

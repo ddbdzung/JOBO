@@ -1,7 +1,4 @@
-const occupation = [
-  'student',
-  'teacher',
-];
+const occupation = ['student', 'teacher'];
 
 module.exports = {
   occupation,

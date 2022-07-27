@@ -4,7 +4,7 @@ const { toJSON } = require('./plugins');
 
 const clientProfileSchema = mongoose.Schema(
   {
-    // JOB đang tuyển 
+    // JOB đang tuyển
     openProject: [
       {
         type: mongoose.SchemaTypes.ObjectId,

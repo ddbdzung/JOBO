@@ -54,8 +54,56 @@ const updateJobById = async (jobId, updateBody) => {
   if (!job) {
     throw new ApiError(httpStatus.NOT_FOUND, 'job not found');
   }
+
+  let jobberIdIndex;
+  let alreadyHaveJobberId = false;
+  let hasJobberNeotiationToUpdate = false;
+  let countJoinedMember = 0;
+  if (updateBody.jobberNegotiation) {
+    hasJobberNeotiationToUpdate = true;
+    const jobberId = updateBody.jobberNegotiation.jobberUser.toString();
+
+    job.jobberNegotiation.forEach((item, index) => {
+      if (item.status === 'joined') {
+        countJoinedMember += 1;
+      }
+      if (item.jobberUser.toString() === jobberId && alreadyHaveJobberId === false) {
+        alreadyHaveJobberId = true;
+        jobberIdIndex = index;
+      }
+    });
+
+    // Không cho phép client tự ứng tuyển vào job của chính mình
+    if (job.clientUser.toString() === jobberId) {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Client is not allowed to self-apply to own job');
+    }
+  }
+  if (hasJobberNeotiationToUpdate) {
+    // Số lượng jobber đã tối đa
+    // Và
+    // JobberNegotiation có trạng thái 'Joined'
+    // => Không cho thêm
+    if (job.maxJobber === countJoinedMember && updateBody.jobberNegotiation.status === 'joined') {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Can not exceed maximum joined jobber');
+    }
+    // Không phải là hành động cập nhật jobberNegotiation đã tồn tại
+    // => Tạo thêm jobberNegotitation mới
+    if (alreadyHaveJobberId === false) {
+      job.jobberNegotiation.push(updateBody.jobberNegotiation);
+    }
+    // Updatebody sẽ ghi đè lên job.jobberNegotiation => mất dữ liệu
+    // Cập nhật job.jobberNegotiation bằng tay
+    if (alreadyHaveJobberId === true && jobberIdIndex >= 0) {
+      Object.assign(job.jobberNegotiation[jobberIdIndex], updateBody.jobberNegotiation);
+    }
+  }
+
+  // Update job không ghi đè jobberNegotiation
+  // eslint-disable-next-line no-param-reassign
+  delete updateBody.jobberNegotiation;
   Object.assign(job, updateBody);
-  await Job.save();
+
+  await job.save();
   return job;
 };
 
@@ -69,8 +117,13 @@ const deleteJobById = async (jobId) => {
   if (!job) {
     throw new ApiError(httpStatus.NOT_FOUND, 'job not found');
   }
-  await Job.remove();
+  await job.remove();
   return job;
+};
+
+const getJobs = async (clientUserId) => {
+  const jobs = await Job.find({ clientUserId });
+  return jobs;
 };
 
 module.exports = {
@@ -80,4 +133,6 @@ module.exports = {
   getJobByEmail,
   updateJobById,
   deleteJobById,
+
+  getJobs,
 };
