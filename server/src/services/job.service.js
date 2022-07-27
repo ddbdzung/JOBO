@@ -55,7 +55,7 @@ const updateJobById = async (jobId, updateBody) => {
     throw new ApiError(httpStatus.NOT_FOUND, 'job not found');
   }
   Object.assign(job, updateBody);
-  await Job.save();
+  await job.save();
   return job;
 };
 

@@ -11,7 +11,7 @@ const createClientProfile = {
   params: Joi.object().keys({
     userId: Joi.string().required().custom(objectId),
   }),
-}
+};
 
 const updateClientProfile = {
   params: Joi.object().keys({
@@ -22,8 +22,8 @@ const updateClientProfile = {
   }),
   query: Joi.object().keys({
     option: Joi.string().required().valid('open', 'active', 'past'),
-  })
-}
+  }),
+};
 
 const getJobberProfile = {
   params: Joi.object().keys({
@@ -35,7 +35,7 @@ const createJobberProfile = {
   params: Joi.object().keys({
     userId: Joi.string().required().custom(objectId),
   }),
-}
+};
 
 const updateJobberProfile = {
   params: Joi.object().keys({
@@ -46,7 +46,7 @@ const updateJobberProfile = {
     fieldId: Joi.array().items(Joi.string().custom(objectId)),
     skill: Joi.array().items(Joi.string()),
   }),
-}
+};
 
 module.exports = {
   getClientProfile,

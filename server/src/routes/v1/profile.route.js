@@ -11,12 +11,12 @@ router
   .route('/client/:userId')
   .get(validate(profileValidation.getClientProfile), profileController.getClientProfile)
   .post(validate(profileValidation.createClientProfile), profileController.createClientProfile)
-  .put(validate(profileValidation.updateClientProfile), profileController.updateClientProfile)
-  
+  .put(validate(profileValidation.updateClientProfile), profileController.updateClientProfile);
+
 router
   .route('/jobber/:userId')
   .get(validate(profileValidation.getJobberProfile), profileController.getJobberProfile)
   .post(validate(profileValidation.createJobberProfile), profileController.createJobberProfile)
-  .put(validate(profileValidation.updateJobberProfile), profileController.updateJobberProfile)
+  .put(validate(profileValidation.updateJobberProfile), profileController.updateJobberProfile);
 
 module.exports = router;

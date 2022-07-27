@@ -2,10 +2,12 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { jobService } = require('../services');
+const { jobService, profileService } = require('../services');
 
 const createJob = catchAsync(async (req, res) => {
   const job = await jobService.createJob(req.body);
+  // Tự động gán jobId vào client profile với trạng thái "open"
+  await profileService.addJobIdToOptionProject(job.clientUser, job._id, 'open');
   res.status(httpStatus.CREATED).send(job);
 });
 
@@ -24,10 +26,31 @@ const getJob = catchAsync(async (req, res) => {
   res.send(job);
 });
 
-// const updateJob = catchAsync(async (req, res) => {
-//   const job = await jobService.updateJobById(req.params.jobId, req.body);
-//   res.send(job);
-// });
+// const getOwnJobs = catchAsync(async (req, res) => {
+
+// })
+
+const updateJob = catchAsync(async (req, res) => {
+  const job = await jobService.updateJobById(req.params.jobId, req.body);
+  let profileStatus
+  switch (job.status) {
+    case 'pending':
+      profileStatus = 'open'
+      break;
+    case 'active':
+      profileStatus = 'active'
+      break;
+    case 'done':
+      profileStatus = 'past'
+      break;
+    
+    default:
+      profileStatus = 'open'
+      break;
+  }
+  profileService.addJobIdToOptionProject(job.clientUser, job._id, profileStatus)
+  res.send(job);
+});
 
 // const deleteJob = catchAsync(async (req, res) => {
 //   await jobService.deleteJobById(req.params.jobId);
@@ -38,6 +61,7 @@ module.exports = {
   createJob,
   getJobs,
   getJob,
-//   updateJob,
-//   deleteJob,
+  // getOwnJob,
+  updateJob,
+  //   deleteJob,
 };

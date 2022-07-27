@@ -29,15 +29,15 @@ const getField = catchAsync(async (req, res) => {
 //   res.send(field);
 // });
 
-// const deleteField = catchAsync(async (req, res) => {
-//   await fieldService.deleteFieldById(req.params.fieldId);
-//   res.status(httpStatus.NO_CONTENT).send();
-// });
+const deleteField = catchAsync(async (req, res) => {
+  await fieldService.deleteFieldById(req.params.fieldId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
 
 module.exports = {
   createField,
   getFields,
   getField,
-//   updateField,
-//   deleteField,
+  //   updateField,
+  deleteField,
 };

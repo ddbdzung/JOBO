@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@joi/date": "^2.1.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.28.1",
     "compression": "^1.7.4",
@@ -32,6 +33,7 @@
     "http-status": "^1.4.0",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "module-alias": "^2.2.2",
     "moment": "^2.24.0",
     "mongoose": "^5.7.7",
