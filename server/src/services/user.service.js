@@ -37,6 +37,10 @@ const getUserById = async (id) => {
   return User.findById(id);
 };
 
+const getUsersNoPagination = async () => {
+  return User.find({});
+};
+
 /**
  * Get user by email
  * @param {string} email
@@ -86,4 +90,6 @@ module.exports = {
   getUserByEmail,
   updateUserById,
   deleteUserById,
+
+  getUsersNoPagination,
 };

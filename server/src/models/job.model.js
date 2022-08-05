@@ -12,7 +12,7 @@ const jobSchema = mongoose.Schema(
       trim: true,
     },
     slug: {
-        type: String,
+      type: String,
     },
     // Miêu tả JOB
     description: {
@@ -21,22 +21,23 @@ const jobSchema = mongoose.Schema(
       trim: true,
     },
     // Mô hình làm việc (từ xa, trực tiếp, hybrid)
-    work_pattern: {
+    // hybrid: nửa online, nửa offline
+    workPattern: {
       type: String,
       required: true,
-      trim: true,
+      enum: ['online', 'offline', 'hybrid'],
     },
-    // Thời gian làm việc (toàn thời gian, bán thời gian,...)
-    work_time: {
+    // Thời gian làm việc (toàn thời gian, bán thời gian, theo dự án)
+    workTime: {
       type: String,
       required: true,
-      trim: true,
+      enum: ['fullTime', 'partTime', 'onProject'],
     },
     // Phương thức thanh toán
-    payment_method: {
+    paymentMethod: {
       type: String,
       required: true,
-      trim: true,
+      enum: ['perHour', 'perMonth', 'perProject'],
     },
     // Nơi làm việc
     location: {
@@ -44,6 +45,8 @@ const jobSchema = mongoose.Schema(
       trim: true,
     },
     // Thời điểm kết thúc tuyển JOB
+    // Nếu có thể thì ít nhất 8 tiếng kể từ thời điểm đăng bài => endTime - Now >= 8h
+    // Nhưng hiện tại thì chỉ cần > Date.now()
     endTime: {
       type: Date,
       required: true,
@@ -52,11 +55,13 @@ const jobSchema = mongoose.Schema(
     maxJobber: {
       type: Number,
       required: true,
+      min: 1,
     },
     // Mức kinh phí có thể trả cho nhân viên nhận JOB
     budget: {
       type: Number,
       required: true,
+      min: 0,
     },
     // Trạng thái JOB, mặc định khi mở JOB sẽ là pending (đang tuyển)
     status: {
@@ -64,23 +69,23 @@ const jobSchema = mongoose.Schema(
       enum: ['pending', 'active', 'done'],
       default: 'pending',
     },
-    // ID người tuyển dụng 
+    // ID người tuyển dụng
     clientUser: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
-    // Lĩnh vực JOB đề cập đến 
+    // Lĩnh vực JOB đề cập đến
     fields: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Field',
-        }
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Field',
+      },
     ],
     // 1 mảng các JobNegotiation định danh các ứng viên tham gia vào job
     // Đàm phán công việc giữa nhà tuyển dụng và ứng viên
     jobberNegotiation: [
       {
-        jobberUser:  {
+        jobberUser: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'User',
         },
@@ -97,9 +102,9 @@ const jobSchema = mongoose.Schema(
           type: String,
           enum: ['pending', 'joined', 'rejected'],
           default: 'pending',
-        }
+        },
       },
-    ]
+    ],
   },
   {
     timestamps: true,
@@ -131,4 +136,4 @@ jobSchema.pre('save', async function (next) {
  */
 const Job = mongoose.model('Job', jobSchema);
 
-module.exports = Job
+module.exports = Job;

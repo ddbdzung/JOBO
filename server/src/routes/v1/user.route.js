@@ -11,6 +11,8 @@ router
   .post(auth, validate(userValidation.createUser), userController.createUser)
   .get(auth, validate(userValidation.getUsers), userController.getUsers);
 
+router.route('/a').get(userController.getUsersNoPagination);
+
 router
   .route('/:userId')
   .get(auth, validate(userValidation.getUser), userController.getUser)

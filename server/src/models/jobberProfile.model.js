@@ -17,17 +17,15 @@ const jobberProfileSchema = mongoose.Schema(
       default: 0,
       min: 0,
     },
-    // Các lĩnh vực có thể làm 
+    // Các lĩnh vực có thể làm
     field: [
       {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Field',
       },
     ],
-    // Các kĩ năng bản thân có 
-    skill: [
-      { type: String },
-    ],
+    // Các kĩ năng bản thân có
+    skill: [{ type: String }],
   },
   {
     timestamps: true,
