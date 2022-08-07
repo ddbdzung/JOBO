@@ -29,13 +29,11 @@ const sendEmail = async (to, subject, text) => {
  * @param {string} token
  * @returns {Promise}
  */
-const sendResetPasswordEmail = async (to, token) => {
+const sendResetPasswordEmail = async (url, to, token) => {
   const subject = 'Reset password';
   // replace this url with the link to the reset password page of your front-end app
-  const resetPasswordUrl = `http://link-to-app/reset-password?token=${token}`;
-  const text = `Dear user,
-To reset your password, click on this link: ${resetPasswordUrl}
-If you did not request any password resets, then ignore this email.`;
+  const resetPasswordUrl = `${url}/api/v1/auth/reset-password?token=${token}`;
+  const text = `Jobo gửi cho bạn link reset password: ${resetPasswordUrl}`;
   await sendEmail(to, subject, text);
 };
 
